@@ -73,9 +73,10 @@ public class DeepSeekLlmClient implements LlmClient {
         }
     }
 
+
     private String buildUserPrompt(String modelInput) {
         return "输入数据（JSON，包含 targetCode、context、ast）：\n"
                 + modelInput
-                + "\n\n请只返回一条中文代码注释，不要包含多余解释。";
+                + "\n\n请只返回一条中文代码注释，不要包含多余解释，无需添加注解格式。";
     }
 }

@@ -1,7 +1,11 @@
 package org.example.dto;
 
 public class GenerateAnnotationResponse {
+
+    //输入信息
     private String modelInput;
+
+    //注释
     private String generatedComment;
 
     public GenerateAnnotationResponse() {
