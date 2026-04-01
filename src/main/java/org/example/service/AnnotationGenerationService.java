@@ -2,6 +2,7 @@ package org.example.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.dto.CommentDetailLevel;
 import org.example.dto.GenerateAnnotationRequest;
 import org.example.dto.GenerateAnnotationResponse;
 import org.example.model.AstNode;
@@ -24,22 +25,31 @@ public class AnnotationGenerationService {
 
     public GenerateAnnotationResponse generate(GenerateAnnotationRequest request) {
         AstNode ast = astParserService.parseToAst(request.getTargetCode());
+        CommentDetailLevel detailLevel = request.getCommentDetailLevel() == null
+                ? CommentDetailLevel.CONCISE
+                : request.getCommentDetailLevel();
 
         Map<String, Object> modelInputMap = new HashMap<>();
         modelInputMap.put("targetCode", request.getTargetCode());
         modelInputMap.put("context", request.getContext() == null ? "" : request.getContext());
         modelInputMap.put("ast", ast);
+        modelInputMap.put("commentDetailLevel", detailLevel);
 
         String modelInput = toJson(modelInputMap);
-        String generatedComment = llmClient.generateComment(modelInput);
+        String generatedComment = llmClient.generateComment(modelInput, detailLevel);
 
         return new GenerateAnnotationResponse(modelInput, generatedComment);
     }
 
     public String generateComment(String targetCode, String context) {
+        return generateComment(targetCode, context, CommentDetailLevel.CONCISE);
+    }
+
+    public String generateComment(String targetCode, String context, CommentDetailLevel detailLevel) {
         GenerateAnnotationRequest request = new GenerateAnnotationRequest();
         request.setTargetCode(targetCode);
         request.setContext(context);
+        request.setCommentDetailLevel(detailLevel);
         return generate(request).getGeneratedComment();
     }
 

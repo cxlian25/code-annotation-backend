@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.dto.CommentDetailLevel;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
@@ -10,12 +11,13 @@ public class PlaceholderLlmClient implements LlmClient {
     private static final Pattern METHOD_NAME_PATTERN = Pattern.compile("(?:public|private|protected)?\\s*(?:static\\s+)?[\\w<>\\[\\]]+\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\(");
 
     @Override
-    public String generateComment(String modelInput) {
+    public String generateComment(String modelInput, CommentDetailLevel detailLevel) {
+        String mode = detailLevel == CommentDetailLevel.DETAILED ? "detailed" : "concise";
         String methodName = extractMethodName(modelInput);
         if (methodName != null) {
-            return "[LLM placeholder] Method " + methodName + " handles the target business logic. Replace this with a real model call.";
+            return "[LLM placeholder][" + mode + "] Method " + methodName + " handles the target business logic. Replace this with a real model call.";
         }
-        return "[LLM placeholder] AST and context were received and processed. Replace this with a real model call.";
+        return "[LLM placeholder][" + mode + "] AST and context were received and processed. Replace this with a real model call.";
     }
 
     private String extractMethodName(String input) {

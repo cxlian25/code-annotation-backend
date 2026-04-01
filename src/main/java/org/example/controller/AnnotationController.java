@@ -38,6 +38,7 @@ public class AnnotationController {
     public GenerateAnnotationResponse generate(@Valid @RequestBody GenerateAnnotationRequest request) {
         log.info("[/generate] request targetCode={}, context={}", abbreviate(request.getTargetCode()), abbreviate(request.getContext()));
 
+//        return new GenerateAnnotationResponse("222","一加一等于二");
         GenerateAnnotationResponse response = annotationGenerationService.generate(request);
 
         log.info(

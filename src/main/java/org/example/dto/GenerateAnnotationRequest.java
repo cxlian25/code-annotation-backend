@@ -8,6 +8,8 @@ public class GenerateAnnotationRequest {
 
     private String context;
 
+    private CommentDetailLevel commentDetailLevel = CommentDetailLevel.CONCISE;
+
     public String getTargetCode() {
         return targetCode;
     }
@@ -22,5 +24,13 @@ public class GenerateAnnotationRequest {
 
     public void setContext(String context) {
         this.context = context;
+    }
+
+    public CommentDetailLevel getCommentDetailLevel() {
+        return commentDetailLevel;
+    }
+
+    public void setCommentDetailLevel(CommentDetailLevel commentDetailLevel) {
+        this.commentDetailLevel = commentDetailLevel == null ? CommentDetailLevel.CONCISE : commentDetailLevel;
     }
 }
