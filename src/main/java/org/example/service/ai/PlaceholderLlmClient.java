@@ -1,6 +1,7 @@
-package org.example.service;
+package org.example.service.ai;
 
 import org.example.dto.CommentDetailLevel;
+import org.example.service.LlmClient;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;

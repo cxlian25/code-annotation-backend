@@ -1,7 +1,8 @@
-package org.example.service;
+package org.example.service.ai;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
+import org.example.service.LlmClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +33,9 @@ public class CodexLlmClient implements LlmClient {
     @Value("${codex.model:}")
     private String model;
 
+    @Value("${codex.enable-thinking:true}")
+    private boolean enableThinking;
+
     public CodexLlmClient(PlaceholderLlmClient fallbackClient) {
         this.fallbackClient = fallbackClient;
     }
@@ -44,25 +49,27 @@ public class CodexLlmClient implements LlmClient {
         }
 
         try {
-            Map<String, Object> requestBody = Map.of(
-                    "model", model,
-                    "input", List.of(
-                            Map.of(
-                                    "role", "system",
-                                    "content", List.of(
-                                            Map.of("type", "input_text", "text", buildSystemPrompt(safeDetailLevel))
-                                    )
-                            ),
-                            Map.of(
-                                    "role", "user",
-                                    "content", List.of(
-                                            Map.of("type", "input_text", "text", buildUserPrompt(modelInput, safeDetailLevel))
-                                    )
+            Map<String, Object> requestBody = new HashMap<>();
+            requestBody.put("model", model);
+            requestBody.put("input", List.of(
+                    Map.of(
+                            "role", "system",
+                            "content", List.of(
+                                    Map.of("type", "input_text", "text", buildSystemPrompt(safeDetailLevel))
                             )
                     ),
-                    "store", false,
-                    "stream", false
-            );
+                    Map.of(
+                            "role", "user",
+                            "content", List.of(
+                                    Map.of("type", "input_text", "text", buildUserPrompt(modelInput, safeDetailLevel))
+                            )
+                    )
+            ));
+            requestBody.put("store", false);
+            requestBody.put("stream", false);
+            if (!enableThinking) {
+                requestBody.put("reasoning", Map.of("effort", "minimal"));
+            }
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

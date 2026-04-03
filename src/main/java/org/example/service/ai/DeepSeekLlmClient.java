@@ -1,7 +1,8 @@
-package org.example.service;
+package org.example.service.ai;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
+import org.example.service.LlmClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
