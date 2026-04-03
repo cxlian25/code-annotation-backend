@@ -1,500 +1,300 @@
-as far as we re concerned all entries have the same size
-used to communicate a return object from a plugin tool to the main whitebox user interface .
-creates a new menu object .
-used to communicate a return object from a plugin tool to the main whitebox user interface .
-creates a new tlongarraylist instance with the default capacity .
-matches a float .
-returns for a given source value and target statement all associated target values and for each the associated edge function .
-ask for confirmation to delete files .
-constructs a new exception with the given detail message and appends the specified reason to the message key .
-write a collection of xmlwriteable objects .
-convert source version vo to target version vo .
-if the named condition does not exist then it is created and initialized to false .
-adds a odorworldentity object to this map .
-checks whether the specified file name is a legal dos windows file name .
-get the length of the internal map array .
-creates a new instance of newvariableresolver
-copies raw asset resource to external storage of the device .
-part of a layer hack to notify the component listener when the component is hidden .
-constructs a new illegaladdressexception .
-initialize the params of the pop up window
-creates group containers .
-accept the visitor .
-provides serialization support .
-create a props object for a problem posted event
-converts a byte array to a user flag .
-append to the tostring a summary of an object array .
-check if a uri is a servletcontext resource .
-creates a new request .
-creates a new instance of a builder with the data of the passed builder .
-return an enumeration of the nodes or a subset of the nodes in an acyclic graph in topological order .
-returns true if upon the next time step the contacts must be updated .
-returns a printable representation of the subjectalternativename .
-removes a parser highlight from this view .
-test if the given string starts with the specified prefix ignoring upper lower case .
-method that will return version information stored in and read from jar that contains this class .
-for this vertex enclosed in a triangle defined by three vertices v v and v interpolate a z value from the surrounding vertices .
-create a new curvecretor object which can create curves from the given degree
-creates a new watcher for auto releasing a connection .
-reset the parser to the initial state without resetting the underlying reader .
-test whether the given sphere is partly or completely within or outside of the frustum defined by this frustum culler .
-installs listeners into the viewport .
-returns all the values of a specific measurement for the specified classifier dataset combination .
-returns true if this operation checks whether given key is present in region .
-this method is queried from the put and putall methods to check if the eldest member of the map should be deleted before adding the new member .
-clones the elementiterator .
-uninstalls defaults from a viewport .
-method for setting properties related to instantiating values from json object .
-returns a multimap view of the solrparams .
-returns a list backed by the specified array .
-returns a copy of the context that differs in that it uses the outer receiver as main receiver and also uses it as the outer receiver .
-registers a listener that is invoked when a peer is disconnected .
-convert nautical miles to radians .
-searches the given field node for annotations and returns each one that matches the provided regular expression pattern .
-creates new generalexception without detail message .
-skips the current sample .
-creates a new winner take all network .
-adds a listener object that is notified about changes in the tag .
-load a properties object from a file .
-add a new callback .
-construct a marshalexception with the specified detail message and vendor specific errorcode .
-unregisters all listeners with data source .
-get the next node number
-executes a statement that returns the row id of the last row inserted by the statement .
-routines to print out a test s properties environment .
-request all carrier agents to score their plans .
-build reflect bytecode from accessor list .
-put string to byte
-returns the string identifying the given cuctx flags
-writes this coord d s data to an arraylist for packet transfer .
-save fingerprint to a file
-a container class to handle and sort the gps log records obtained from the digicore data set .
-register an interface for requests from the parser in case an error occurs .
-create an instance with custom prefix suffix separator and format for components .
-writes the given string to the bytebuffer .
-reads model from given virtual file .
-invoked when a key has been pressed .
-marshals from a map produced by jsonvalue . asmap to the map expected by the sms .
-constructs a new exception with null as its detail message .
-proceed to the next available ring color .
-returns whether it has the time period description .
-resets the styling of this view and sets it s content to an empty string .
-skilltarget recovered num dp because you used skillname .
-retrives solrdocuments through a paginated iterator .
-this method was generated by mybatis generator .
-addresses can be long
-creates an apl record from the given data .
-return a string representation of this ntsidprimarygroupprincipal .
-clears all of the previously set sounds and events .
-creates an instance for the specified graph edge weights and alpha random jump probability parameter .
-sets the playback rate of the mediaplayer to be twice the current playback rate .
-create a quoted string configuration element .
-increment the value at position by value .
-add the provided fragment to the language model subject to some filtering .
-cleans dtmxrtreefrag objects by removing references to dtm and xpathcontext objects .
-creates a new viaheader based on the newly supplied uri and branch values .
-reads next bit value lsb first
-synchronous teststackex service request .
-runs this test from the command line .
-dom the initevent method is used to initialize the value of interface .
-construct an new xml stream writer for the specified file with a default encoding of utf .
-delete video sharing associated with a given contact from history and abort reject any associated ongoing session if such exists .
-end an array .
-constructs an unknowneventexception with no detail message .
-creates a new jvm launch request with the specified properties .
-creates a abstractquerybuilder instance that can be used to build api request with various parameters
-creates sqlmigration that migrates using specified sql file .
-process a single byte producing an output block if neccessary .
-checks if the specified attribute is assigned i . e .
-enumerate the properties of the target object and add them as additional entries to the query string of the given string uri .
-initialise this double data source with the reader from which a text representation of doubles one per line can be read .
-returns the number of edges in this digraph .
-handle deserialization of the singleton .
-called by appmenu to report that the app menu visibility has changed .
-compute linear distance squared from plane to a vector .
-binds the tracks that must be shown on the table to deleteplaylistfromfolders list property
-backup the context value
-convert to com . vividsolutions . jts . geom geometry .
-returns true if the call is due to an explicit instance invoke statement .
-ensure equivalent method based on equals .
-creates updates or deletes zero or more pieces of content in the data store .
-create a webview for mac os .
-find the fields constant that matches fieldid throwing an exception if it is not found .
-loads all user profiles one by one from disk using datadir as starting point .
-check if the provided mask has a specific rights attr value .
-write a message with trace level debug to the trace system .
-cleans up files .
-add custom commands intended for the channel context menu .
-return a reference to the internal collection of ciphersuites .
-flush the current wasphash all the key values will be removed
-begins canceling a block volume migration .
-is a global telephone number .
-decrements the number of cars and or engines that will be dropped off by trains at this location .
-generate a random password of the default length .
-unconditionally normalizes the given id currently to lower case
-checks whether two arrays are the same length treating null arrays as length .
-moves a webappactivity to the back of the queue indicating that the webapp is still in use and shouldn t be killed .
-create the default log flattener .
-enables the given not to have capability .
-constructs a tcptransport .
-subscribe to a resource which has not been added into the api
-reloadpreferences should be called when user preferences mapping keys to action changed .
-scroll the th given comment
-process a store instruction
-creates the path in zookeeper creating each node as necessary .
-set number of digits to shift the decimal separator to the right coming from the standard btc notation that was common pre .
-changes the string if bigger then the given limit
-creates a new drag control that invokes an action upon drag events .
-constructs a instanceofexpr expr type grammar chunk .
-throw an arrayindexoutofboundsexception if either of the specified coordinates are outside the bounds of this pixel matrix .
-a filter that simply wraps a query .
-reverses configuration which was done on the specified component during installui .
-ensures that our long can hold at least desiredlongcount bits .
-asserts that the update logs are in sync between the leader and slave .
-method to handle qnames
-cancels an ongoing attempt to acquire .
-increases the capacity of the array .
-this implementation can t edit the values yet
-creates a token that represents a decimal number .
-construct a jsonobject from a subset of another jsonobject .
-revoke or deny contact request .
-creates a workflow step in the passed workflow to wait for the vplex distributed volume with the passed uri to rebuild .
-searches the specified collection for the minimum element .
-constructs the logoutresponse object .
-creates a temporary file for testing purposes .
-clear all entries that belong to the given index .
-change cifs share .
-case for declension of user name and surname .
-get the optional bigdecimal value associated with an index .
-loading bitmap from imagesource with specific scale
-constructs a new session with the given name .
-this method is a shorthand form for logthrowable
-adds the specified element to this set if it is not already present .
-send report file to email recipients
-fires a property change of an integer property with the given name .
-tostring methode creates a string representation of the object
-adds an photo to the user
-notify unsuccessful completion of the operation
-template method to be overriden by java plug in .
-creates a new thread object .
-adds value to the key entry in themap or creates a new one if not already there
-generates a random name for the segments .
-busqueda del usuario por nombre .
-creates a defaultcolorselectionmodel with the current color set to color which should be non null .
-add a action listener for a specific key stroke
-maps array of d points from absolute to the image s relative coordinate system and writes the transformed points back into the array .
-creates particle at position xyz
-creates a new dynamic group member list with the provided information .
-commits this edit so it is visible to readers .
-creates a new ambience layer with a limited amount of tracks
-looks onto the char passed and updates current position coordinates .
-returns true iff the given throwable is and outofmemoryexception otherwise false
-constructs a classnotfoundexception with the specified detail message .
-rta emulate rapid type analysis .
-erode the image using morphological transformations
-destruction of the servlet .
-call the children visitors .
-reset the progress spinner to default rotation start and end angles .
-read in the root node if it has not yet been read .
-spring configured test that uses jndi .
-parses the rules from a grammar and returns the resulting grammarrulenode root .
-creates a file of the specified size with sequential data .
-number of posts to return maximum .
-queries the database for the existing storage pool object
-creates a child element with the given name and appends it to the element child node list .
-returns true if toprinter can be called without throwing an unsupportedoperationexception .
-creates and returns a new push button with the given label tooltip and or image .
-compares this entry with another cp info object which may reside in a different constant pool .
-converts a time in millis to hours minutes and seconds and put it in the buffer
-train the model with one instance .
-check access on the new superior entry if it exists .
-finds the mnemonic character in a message .
-returns index of bag containing maximum number of instances .
-cancels the quorum .
-this method is invoked if the bee will leave the hive .
-initializes the child array to the correct size .
-generate a formatted timestamp for the current time .
-inserts the specified element at the front of this list .
-see the general contract of the readchar method of datainput .
-returns a url with the hostname and port of the origin server .
-toggle the badge visibility in the ui .
-copy self signed certificates from one key store to another .
-lat lon with a x y offset placement .
-constructs a new exception with null as its detail message .
-adds access to a provider based on its authority
-age a file by the given number of seconds .
-compiles the given script .
-close the panel view by animating it into view .
-for compilation support we need the option of overwriting rather than appending to previous composition .
-calculates the x coordinate of the right edge given the other sides of the rectangle and an aspect ratio .
-constructs a libusb exception which outputs the error code and the error message from libusb together with a custom error message .
-used by tests to simulate sending of data to the sut opening a server connection
-import preferences from the specified input stream which is assumed to contain an xml document in the format described in the preferences spec .
-my test method javadoc
-debit loan portfolio and credit fund source for a disbursement all debits are turned into credits and vice versa in case of disbursement reversals
-identifier of an item owner community note that community id in the owner id parameter should be negative number .
-get ft http cap always on option
-print a message to system output if there was a problem initializing the random number generator .
-write out the list of namespace declarations .
-react to changed selection .
-constructs the time constraint .
-handles remove auth instance request .
-find closes node to the left of the new point and create a new triangle .
-initialise the cipher and possibly the initialisation vector iv .
-add a number of hours to the date .
-creates a multifieldqueryparser .
-sets the position to getendindex getendindex if the text is empty and returns the character at that position .
-constructs an entry using the globe and vertical exaggeration of a specified draw context .
-create a sql reference to the given column
-creates a new instance of this storage scheme test case .
-requirements changed along the major axis .
-draws the result text centered in the specified component .
-constructs a parser configuration using the specified symbol table .
-sends a html email to the specified user .
-configures the xmlreader before use
-append the text at the end of the path using a specified encoding .
-get process now .
-returns whether this node has an attribute with the given name .
-renders the element in textual representation .
-sanity check that we didn t get a realtime non caching searcher
-constructs a classcastexception with no detail message .
-executes query runnable .
-builds an integer operand .
-create the ssl socket connection to the specified host layered over an existing socket .
-decode and sample down a bitmap from resources to the requested width and height .
-constructs asqlwarning object with a given reason sqlstate vendorcode and cause .
-creates a new request with the given method .
-draws as much of the specified image as has already been scaled to fit inside the specified rectangle .
-check if there is any connectivity to a wifi network
-constructs a new bundle of ciphertext and iv from a string of the format base iv base ciphertext .
-package private for testing resets all of the static member variables .
-constructs a uniform distribution with min . and max . .
-equivalent to integer . tostring i .
-will create children in root based on schema
-add all values to sum
-unpacks the compressed character translation table .
-open the outline view for the given input element .
-constructs an java model status with no corresponding elements .
-a stdoutwrite attached to the specified output stream no gui mode
-creates a scan operator for the given index using left join semantics after the indextype s tabletype .
-reads data number of bytes read is determined by data type from the stream to int .
-constructs a new nosuchmechanismexception with the specified detail message and cause .
-an end event is received see if this is an event we are listening for
-this method was generated by mybatis generator .
-make an attributed class instance creation expression .
-this function finds the limit value in the operator s properties .
-used for registering info types this should have a unique id !
-verify the blockmirror objects have been migrated correctly .
-returns the determinant of matrix a .
-create a state spec that is optimized for adding values frequently and occasionally retrieving all the values that have been added .
-register packager name mappings .
-reads in a sequence of strings from standard input insertion sorts them and prints them to standard output in ascending order .
-append one encodedstringvalue to another .
-repeat flag .
-true means that the server will load configuration from the configuration files
-returns the current lexical state .
-custom divider with gap between sections in dpi .
-opens a search page for apks based on the user s preferred search engine .
-creates a thread pool that can schedule commands to run after a given delay or to execute periodically .
-mapping to escape the apostrophe character to its xml character entity .
-factory method to create a random using the supplied randomgenerator .
-updates this sketch with a long key and u value .
-circularly traverse table of size len .
-create an createaccountdialog for a parent window and specified client .
-write a circle in the response .
-clients should invoke this method when they encounter a connectivity failure on a connection returned by this route selector .
-decrements the iterator s index by one and returns the character at the new index .
-returns true if the underlying resource has changed .
-de serialization ctor .
-read a raw varint from the stream .
-action editor stop editor
-converts a candidate to a jsep candidate object
-initializes all fields .
-infer the bottoms of the subtype hierarchy .
-util method to write an attribute without the ns prefix
-checks if there is a relation identified in relation service with given relation id .
-puts a byte into this byte vector .
-creates a new text loads the text s quads into a vao and adds the text to the screen .
-get drop shipment .
-function to synchronize adapter content loading .
-checks if the given plugin is enabled or not
-this method applies a patch to a state object .
-test that the external parameter entities feature can be disabled .
-get the bearing in degrees from point to point
-returns the interpreter that this thread refers to .
-parses out a name from an osgi manifest header .
-returns a new array containing a copy of the buffer content .
-returns whether it has the rating .
-generates a stream that is computed from a provided stream following two steps .
-returns the width in the ui of the specified ui component relative to the entire ui width .
-calculate the shadow color face left bottom corner .
-calculates a load given on two deltas
-constructs a cookie with a specified name and value .
-constructs a new instance of this class given its parent .
-quickly pops a number of items from the stack .
-make new subscription to active smis provider to get indications for monitoring
-generates a bit immediate move code sequence .
-converts the given css length string to pixels
-adds an issue to the respective set according to issue severity and logs at the appropriate log level
-expand the window s rectangle to include the new rectangle
-consume the next character and check that it matches a specified character .
-consolidate the assignments made from pre zoned ports with those made by ordinary port assignment .
-walk through omgeometry that may be a omlist of geometries omarealist and concatentate the coordinates to make one big poly .
-call this if you want to establish collision that was previously disabled by contactfilter shouldcollide .
-proceed and execute wrapped trifunction with it s input params as captured
-this function handles call from js
-subtract the specified number of droidflakes .
-constructs a pixelinterleavedsamplemodel with the specified parameters .
-writes a line separator .
-creates a pageable object for printing this view .
-recursively builds a jtree from an object heirarchy .
-converts byte size into human readable format
-return a list of all currently running services .
-cast result object to an xmlstring .
-runs this test from the command line .
-add a native in window dialog to the screen .
-returns a multiplexing ui instance if any of the auxiliary lookandfeels supports this ui .
-wait for the messenger to know about the given endpoint .
-whether or not the post processor is enabled
-verify if migration checkpoint information is saved to zk
-get class name from a uri
-calculates the fitness for the rrse root relative squared error type fitness .
-creates an identical copy of the checkout for use in updates .
-move a file or directory .
-removes a previously added footer view .
-setter for max size for both width and height of bitmap that will be decoded from an input uri and used in the view .
-creates a health check for a datasource metadata loader .
-creates a new instance .
-this method is called to open authenticationactivity .
-sorts the array in place .
-set a listener to be invoked when the negative button of the dialog is pressed .
-called by a reader selector when it detects that a channel has pending data for read .
-run all the tests in classes .
-invokes the contains method on each ui handled by this object .
-unconsults unloads a stream .
-returns the number of new replacements to be made i . e .
-creates a auto generated localization for the given domain object key .
-creates new d point with given coords
-creates an observable that emits the connection state changes the googleapiclient
-creates a new reil register object .
-executes a statement that returns a by table with a blob value .
-creates a hexabugs simulation with the given random number seed .
-calculate the probability distribution for p xi mb xi where mb xi is the markov blanket of xi .
-returns if the minimum y value was set .
-callback for completion of query execution .
-constructs a new instance with the given value .
-stars a view .
-off heap write callback .
-changes to the previous window start time .
-check if a user is authenticated .
-the entry point of the test .
-create an instance of encryptionmethodtypekeysize
-creates a list of elements .
-initializes the cipher in the specified mode with the given key and iv .
-renders the screen at each refresh
-override the parent s method avoid creating a menu bar .
-appends a method to the class .
-indicates that a new pcdata element has been encountered .
-normalize a mime data type .
-used to retrieve the number of lines .
-registers an inputoperation on this interpreter .
-internal routine to handle a timeout
-construct a new resultsetmetadata object wrapping the properties of the specified java class .
-auto generated add method for the array for convenience
-updates associated with model pom file content
-writes a character and a new line then optionally flushes the buffer .
-add adds the provided values to this vector creating a new vector that is then returned .
-brief negated copy of a
-commits the transaction .
-used to communicate a return object from a plugin tool to the main whitebox user interface .
-iterate over all cubes between starty and endy in this storage in order .
-returns whether or not bracket matching is enabled .
-parses the json data from the specified reader into list of objects of the specified type .
-generate a random byte array and hash it .
-specified the last by sequence number that has been seen by the consumer .
-creates a cursor wrapper .
-tests submitting a query with a configured consistency level .
-tests if the map is full
-access a default instance of this class access is synchronized
-used to scan effects for stumble stagger spin openaerial
-returns the volume or block snapshot instance for the passed uri .
-determine whether a feature has been seen enough times to learn a decoding model weight for it
-called whenver the thread is interrupted .
-creates the controls to display diffs and returns the resulting composite .
-called from render if this kmlabstractfeature s visibility is not set to false .
-allows subclasses to redefine points returned
-determines whether a common case is forbidden between two varnames .
-find user by name .
-create a new nountag .
-removes a constraint from the test child definition .
-constructs a query to retrieve documents that fully contain the input envelope .
-gets cache affinity key .
-make a new split with the specified attributs
-override to make two instances with same value equal .
-local version of math . min int int
-indicates whether or not the factory is configured to produce parsers which validate the xml content during parse .
-used for config loader .
-marks the passed in region as not needing to be painted .
-constructs a new exception with the specified detail message .
-clear and initialize a timinglogger object that will log using the specific tag .
-creates xmltree from input stream .
-helper fails if assertbefore succeeds .
-inserts a boolean value into the mapping of this bundle replacing any existing value for the given key .
-gets the state of the flag which indicates if the old windows look and feel should be rendered .
-specifies that the indicated rows columns should not be grid like .
-logs the given message and throwable at the error level .
-gets the value of the indascluster property .
-make a collection of threads runnable optionally clearing the source collection .
-called when a component that is needed and not available with an appropriate iterator from the beancontext .
-draws the entity for the given hex .
-returns a printable form of this attribute using rfc syntax for individual attribute value assertions .
-empty out the cache .
-process all incoming loconet messages to look for ipl operations .
-clears all the domain markers .
-construct a private key from it s org . bouncycastle . crypto equivalent .
-this is called when we receive a response code from android market for a restoretransactions request .
-are subqueries in comparison expressions supported ?
-removes wheel scrolling listener
-creates a new instance of this extended operation config manager .
-are we the same type as other ?
-write the exceptions table
-creates a graph which is an edge folded version of h where hyperedges are replaced by k cliques in the output graph .
-creates a new tuplequeryresulthandlerexception wrapping another exception .
-initializes the current reference using the concrete object
-rests the boundaries of the shape which is drawn as the rubberband .
-searches the list back to front for the last index of value starting at offset .
-runs this test from the command line .
-perform a http put request and track the android context which initiated the request .
-test for getprivate method assertion returns private key valid private key in this case
-creates a new connection finalizer job .
-adds a listener for table column model events .
-the overall pdf table generator .
-runs or resumes the current process .
-create an instance with a custom number format for components .
-determines whether current local host is different from previously cached .
-assigns the specified double value to each element of the specified array of doubles .
-this method allows you to output debug messages only when debugging is on .
-queries the latest entity associated with the model .
-returns true if this is limited access .
-display toast for image loading failure .
-get the plural form of the word if needed by adding an es to its end .
-construct an instance .
-returns a string representation of x where x is treated as unsigned .
-drag a mouse from a point to another point i . e .
-constructs a inv policy exception with a default minor code of a completion state of completionstatus . completed no and a null description .
-creates a new builder without a username
-add overlapping view and place it into overlapping container
-this constructs an instance from a factory and a notifier .
-checks whether the information about the oma content is empty .
-returns true if the argument is a composing character and false otherwise .
-prints a z in default e format .
-fires message event request listeners .
-unregisters the given id .
-returns sqrt a b without under overflow .
-closes the connection manager .
-returns whether the icon will apply mip map filtering to it s source image .
-return the namespace name of the element s type .
-determine if we must drop the connection because of the http status code .
-writes all the attributes of this attribute list in the given byte vector .
-contacts the remote server to verify that the object implements this type .
-returns the appropriate capacity power of two for the specified initial capacity argument .
+计算键值对在堆内存中的占用大小，若值为墓碑标记则返回固定值，否则累加键值大小与条目开销。
+用于将返回对象从插件工具传递到主Whitebox用户界面。
+创建一个新的菜单对象。
+用于将返回对象从插件工具传递到主Whitebox用户界面。
+创建一个具有默认容量的新TLongArrayList实例。
+匹配一个浮点数。
+对于给定的源值和目标语句，返回所有关联的目标值及各自的边函数。
+请求确认以删除文件。
+使用给定的详细信息构造一个新异常，并将指定的原因追加到消息键中。
+写入一个XMLWriteable对象的集合。
+将源版本值对象转换为目标版本值对象。
+如果指定的条件不存在，则创建并将其初始化为false。
+向此地图添加一个OdorWorldEntity对象。
+检查指定的文件名是否为合法的DOS/Windows文件名。
+获取内部映射数组的长度。
+创建NewVariableResolver的新实例。
+将原始资产资源复制到设备的外部存储。
+层级技巧的一部分，用于在组件隐藏时通知组件监听器。
+构造一个新的IllegalAddressException。
+初始化弹出窗口的参数。
+创建组容器。
+接受访问者。
+提供序列化支持。
+为问题发布事件创建一个属性对象。
+将字节数组转换为用户标志。
+向toString字符串追加对象数组的摘要。
+检查URI是否为ServletContext资源。
+创建一个新的请求。
+使用传入构建器的数据创建构建器的新实例。
+以拓扑顺序返回有向无环图中节点（或其子集）的枚举。
+如果在下一个时间步必须更新联系人，则返回true。
+返回SubjectAlternativeName的可打印表示形式。
+从此视图中移除一个解析器高亮。
+测试给定字符串是否以指定前缀开头，忽略大小写。
+该方法将返回存储在包含此类的jar中并从中读取的版本信息。
+对于由三个顶点v0、v1、v2定义的三角形内的此顶点，从周围顶点插值出一个z值。
+创建一个新的CurveCreator对象，该对象可以从给定度数创建曲线。
+创建一个用于自动释放连接的新监视器。
+将解析器重置为初始状态，但不重置底层读取器。
+测试给定球体是否部分或完全位于由此视锥体裁剪器定义的视锥体内部或外部。
+将监听器安装到视口中。
+返回指定分类器和数据集组合的特定测量的所有值。
+如果此操作用于检查给定键是否存在于区域中，则返回true。
+在put和putAll方法中查询此方法，以检查在添加新成员之前是否应删除映射中最老的成员。
+克隆ElementIterator。
+从视口卸载默认设置。
+用于设置与从JSON对象实例化值相关的属性。
+返回SolrParams的多重映射视图。
+返回由指定数组支持的列表。
+返回此上下文的一个副本，不同之处在于它使用外部接收器作为主接收器，同时也将其用作外部接收器。
+注册一个监听器，当对等节点断开连接时调用。
+将海里转换为弧度。
+在给定的字段节点中搜索注解，并返回与提供的正则表达式模式匹配的每个注解。
+创建不带详细信息的新GeneralException。
+跳过当前样本。
+创建一个新的胜者全得网络。
+添加一个监听器对象，该对象在标签更改时收到通知。
+从文件加载属性对象。
+添加一个新的回调。
+使用指定的详细信息和供应商特定的错误代码构造一个MarshalException。
+从数据源取消注册所有监听器。
+获取下一个节点编号。
+执行一条语句，返回该语句插入的最后一行ID。
+用于打印测试属性环境的例程。
+请求所有运输代理对其计划进行评分。
+从访问器列表构建反射字节码。
+将字符串放入字节中。
+返回标识给定CUctx标志的字符串。
+将此坐标的数据写入ArrayList以进行数据包传输。
+将指纹保存到文件。
+一个容器类，用于处理和排序从DigiCore数据集中获取的GPS日志记录。
+注册一个接口，用于在发生错误时处理来自解析器的请求。
+使用自定义的前缀、后缀、分隔符和组件格式创建一个实例。
+将给定的字符串写入ByteBuffer。
+从给定的虚拟文件读取模型。
+在按下某个键时调用。
+从JSONValue.asMap生成的Map映射到SMS期望的Map。
+构造一个详细信息为null的新异常。
+切换到下一个可用的圆环颜色。
+返回是否具有时间段描述。
+重置此视图的样式并将其内容设置为空字符串。
+skilltarget恢复了num0点DP，因为你使用了skillname。
+通过分页迭代器检索SolrDocument。
+此方法由MyBatis Generator生成。
+地址可以是长地址。
+根据给定数据创建APL记录。
+返回此NTUserPrincipal的字符串表示形式。
+清除所有先前设置的声音和事件。
+为指定的图、边权重和随机跳转概率参数alpha创建一个实例。
+将媒体播放器的播放速率设置为当前播放速率的两倍。
+创建一个带引号的字符串配置元素。
+将指定位置的值增加value。
+将提供的片段添加到语言模型中，但需经过一些筛选。
+通过移除对DTM和XPathContext对象的引用来清理DTMXRTreeFrag对象。
+基于新提供的URI和分支值创建一个新的ViaHeader。
+读取下一个比特值（LSB优先）。
+同步TestStackEx服务请求。
+从命令行运行此测试。
+DOM：initEvent方法用于初始化接口的值。
+为指定的文件构造一个新的XML流写入器，默认编码为UTF-8。
+创建一个指定大小的文件，其中包含连续数据。
+要返回的最大帖子数量。
+在数据库中查询现有存储池对象。
+使用给定名称创建一个子元素，并将其追加到元素的子节点列表中。
+如果调用toPrinter方法不会抛出UnsupportedOperationException异常，则返回true。
+创建并返回一个带有给定标签、工具提示和/或图片的新按钮。
+将此条目与可能位于不同常量池中的另一个cp_info对象进行比较。
+将毫秒时间转换为时、分、秒，并将其放入缓冲区。
+使用一个实例训练模型。
+检查新上级条目（如果存在）的访问权限。
+在消息中查找助记符字符。
+返回包含最大实例数的包的索引。
+取消法定人数操作。
+当蜜蜂即将离开蜂巢时调用此方法。
+将子数组初始化为正确的大小。
+为当前时间生成格式化的时间戳。
+在列表的头部插入指定元素。
+请参阅DataInput接口的readChar方法的一般约定。
+返回包含源服务器主机名和端口的URL。
+在用户界面中切换徽章的可见性。
+将自签名证书从一个密钥库复制到另一个。
+包含经纬度和X、Y偏移量的放置方式。
+构造一个详细信息为null的新异常。
+根据权限（authority）添加对提供程序的访问。
+将文件修改时间提前指定的秒数（使其变旧）。
+编译给定的脚本。
+通过动画效果将面板视图关闭（移出视图）。
+为了编译支持，我们需要覆盖先前组合的选项，而不是追加。
+在给定矩形其他边和宽高比的情况下，计算右侧边缘的X坐标。
+构造一个Libusb异常，该异常会输出来自Libusb的错误代码和错误消息，以及自定义的错误消息。
+供测试使用，用于模拟向被测系统（SUT）发送数据（打开服务器连接）。
+从指定的输入流导入首选项，该输入流应包含首选项规范中所述格式的XML文档。
+我的测试方法Javadoc。
+为发放款项记入贷款组合借方和资金来源贷方（如果是发放逆转，则所有借方和贷方互换）。
+项目所有者的社区标识符。请注意，所有者ID参数中的社区ID应为负数。
+获取文件传输（FT）HTTP能力始终开启选项。
+如果在初始化随机数生成器时出现问题，则向系统输出打印一条消息。
+写出命名空间声明列表。
+对选中的更改做出反应。
+构造时间约束。
+处理移除认证实例请求。
+找到新点左侧最近的节点并创建一个新的三角形。
+初始化密码，可能包括初始化向量（IV）。
+向日期添加若干小时。
+创建一个多字段查询解析器。
+如果文本为空，则将位置设置为getEndIndex()，并返回该位置处的字符。
+使用指定绘图上下文的Globe和垂直夸张构造一个条目。
+创建对给定列的SQL引用。
+创建此存储方案测试用例的新实例。
+沿主轴方向的需求发生变化。
+在指定组件的中心绘制结果文本。
+使用指定的符号表构造一个解析器配置。
+向指定用户发送HTML电子邮件。
+在使用前配置XML阅读器。
+使用指定的编码在路径末尾追加文本。
+立即获取处理标志。
+返回此节点是否具有给定名称的属性。
+以文本形式渲染该元素。
+健全性检查，确保我们没有得到一个实时的、非缓存搜索器。
+构造一个没有详细消息的ClassCastException。
+执行查询可运行对象。
+构建一个整数操作数。
+创建一个SSL套接字连接到指定主机，该连接在现有套接字上分层建立。
+从资源解码并下采样位图到请求的宽度和高度。
+使用给定的原因、SQL状态、供应商代码和起因构造一个SQLWarning对象。
+创建一个具有给定方法的新请求。
+绘制已缩放到适合指定矩形内部的指定图像的尽可能多的部分。
+检查是否有任何连接到WiFi网络的连接。
+从格式为base64(IV)|base64(密文)的字符串构造一个新的密文和初始化向量（IV）捆绑包。
+包内私有，用于测试。重置所有静态成员变量。
+构造一个最小值和最大值的均匀分布。
+等同于Integer.toString(i)。
+将根据Schema在根向量中创建子向量。
+将所有值加到sum中。
+解压压缩的字符转换表。
+为给定的输入元素打开大纲视图。
+构造一个没有对应元素的Java模型状态。
+附加到指定输出流的StdOutWriter（无GUI模式）。
+为给定索引创建一个扫描操作符，在索引类型的表类型之后使用左连接语义。
+从流中读取数据（读取的字节数由数据类型决定）到int。
+构造一个带有指定详细信息和起因的新NoSuchMechanismException。
+收到结束事件，查看这是否是我们正在监听的事件。
+此方法由MyBatis Generator生成。
+创建一个有属性的类实例创建表达式。
+此函数在操作符的属性中查找限制（limit）值。
+用于注册信息类型。这应该有一个唯一的ID！
+验证块镜像（BlockMirror）对象是否已正确迁移。
+返回矩阵A的行列式。
+创建一个状态规格，该规格针对频繁添加值和偶尔检索已添加的所有值进行了优化。
+注册包（Packager）名称映射。
+从标准输入读取一个字符串序列，使用插入排序对它们进行排序，然后按升序将它们打印到标准输出。
+将一个EncodedStringValue追加到另一个上。
+重复标志。
+为true意味着服务器将从配置文件加载配置。
+返回当前词法状态。
+自定义分隔线，在节（section）之间留有间隙（单位为dpi）。
+根据用户首选的搜索引擎，打开一个用于搜索APK的页面。
+创建一个线程池，可以安排命令在给定延迟后运行，或定期执行。
+用于将撇号字符转义为其XML字符实体的映射。
+工厂方法，用于使用提供的随机数生成器（RandomGenerator）创建一个Random对象。
+使用长整型键和U型值更新此草图。
+在大小为len的表中循环遍历。
+为父窗口和指定的客户端创建一个创建账户对话框。
+在响应中写入一个圆形。
+当客户端在此路由选择器返回的连接上遇到连接失败时，应调用此方法。
+将迭代器的索引减一并返回新索引处的字符。
+如果底层资源已更改，则返回true。
+反序列化构造函数。
+从流中读取一个原始的varint。
+动作编辑器停止编辑器。
+将一个候选对象转换为JSEP候选对象。
+初始化所有字段。
+推断子类型层次结构中的最底层类型。
+写入不带命名空间前缀属性的工具方法。
+检查在关系服务中是否存在具有给定ID的关系。
+将一个字节放入此字节向量。
+创建一个新文本，将文本的四边形加载到VAO中，并将该文本添加到屏幕。
+获取是否属于直运。
+用于同步适配器内容加载的函数。
+检查给定的插件是否启用。
+此方法将补丁应用到状态对象。
+测试是否可以禁用外部参数实体功能。
+获取从一点到另一点的方位角（以度为单位）。
+返回此线程引用的解释器。
+从OSGi清单头中解析出一个名称。
+返回一个包含缓冲区内容副本的新数组。
+返回是否具有评分。
+生成一个流，该流是通过以下两个步骤从提供的流计算得出。
+返回指定UI组件在UI中的宽度相对于整个UI宽度的比例。
+计算左下角面的阴影颜色。
+根据两个差值计算负载。
+构造一个具有指定名称和值的Cookie。
+给定其父类，构造此类的一个新实例。
+快速从栈中弹出多个项目。
+向活动的SMI-S提供者建立新订阅以获取监视指示。
+生成位立即移动代码序列。
+将给定的CSS长度字符串转换为像素。
+根据问题严重性将问题添加到相应的集合，并以适当的日志级别记录。
+扩展窗口的矩形以包含新矩形。
+消耗下一个字符并检查它是否与指定字符匹配。
+将预分区端口所做的分配与普通端口分配所做的分配进行合并。
+遍历可能是几何体OMList（OMAreaList）的OMGeometry，并将坐标连接起来形成一个大多边形。
+如果您希望重新建立之前被接触过滤器shouldCollide禁用的碰撞，请调用此方法。
+继续并使用其捕获的输入参数执行包装的三元函数。
+从JS调用此函数。
+减去指定数量的DroidFlakes（雪花）。
+使用指定的参数构造一个PixelInterleavedSampleModel。
+写入行分隔符。
+创建一个用于打印此视图的Pageable对象。
+递归地从对象层次结构构建JTree。
+将字节大小转换为人类可读的格式。
+返回当前所有正在运行的服务列表。
+将结果对象转换为XMLString。
+从命令行运行此测试。
+向屏幕添加一个原生窗口内对话框。
+如果任何辅助外观支持此UI，则返回多路复用UI实例。
+等待信使了解给定的端点。
+后处理器是否启用。
+验证迁移检查点信息是否已保存到ZooKeeper。
+从URI获取类名。
+计算RRSE（相对根平方误差）类型适应度的适应度值。
+创建一个相同的结账副本，用于更新。
+移动文件或目录。
+移除先前添加的页脚视图。
+设置将从输入URI解码并用于视图的位图的最大宽度和高度。
+为数据源元数据加载器创建健康检查。
+创建新实例。
+调用此方法以打开AuthenticationActivity。
+原地排序数组。
+设置当对话框的否定按钮被按下时要调用的监听器。
+当读取选择器检测到通道有待读取数据时调用。
+运行类中的所有测试。
+在此对象处理的每个UI上调用contains方法。
+取消咨询（卸载）一个流。
+返回将要进行的新替换数量（即，不相同的现有原子数量）。
+为给定的域对象键创建自动生成的本地化。
+使用给定坐标创建新的3D点。
+创建一个可观察对象，用于发出Google API客户端的连接状态更改。
+创建一个新的REIL寄存器对象。
+执行一条返回包含Blob值的表的语句。
+使用给定的随机数种子创建HexaBugs模拟。
+计算P(Xi | MB(Xi))的概率分布，其中MB(Xi)是Xi的马尔可夫毯。
+返回是否设置了最小Y值。
+查询执行完成的回调。
+用给定值构造新实例。
+为视图加星标。
+堆外写入回调。
+切换到上一个窗口的开始时间。
+检查用户是否已通过身份验证。
+测试的入口点。
+创建EncryptionMethodTypeKeySize的实例。
+创建元素列表。
+使用给定的密钥和初始化向量（IV）以指定模式初始化密码。
+在每次刷新时渲染屏幕。
+覆盖父类的方法，避免创建菜单栏。
+向类追加一个方法。
+指示遇到了新的PCDATA元素。
+规范化MIME数据类型。
+用于检索行数。
+在此解释器上注册一个输入操作。 

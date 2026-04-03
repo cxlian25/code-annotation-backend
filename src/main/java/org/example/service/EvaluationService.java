@@ -35,8 +35,11 @@ public class EvaluationService {
             return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0);
         }
 
+        // 平均 BLEU 分数（衡量生成注释与参考注释的 n-gram 重合度）
         double bleuSum = 0.0;
+        // 平均 METEOR 分数（综合考虑精确率、召回率和片段连续性）
         double meteorSum = 0.0;
+        // 平均 ROUGE-L 分数（基于最长公共子序列的相似度）
         double rougeLSum = 0.0;
 
         for (int i = 0; i < total; i++) {

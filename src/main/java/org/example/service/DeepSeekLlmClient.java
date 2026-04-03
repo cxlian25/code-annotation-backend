@@ -3,7 +3,6 @@ package org.example.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Primary
 public class DeepSeekLlmClient implements LlmClient {
     private static final String SYSTEM_PROMPT = "你是一名专业的 Java 代码注释助手。";
     private static final String CONCISE_PROMPT_SUFFIX = "\n\n要求：生成一条简洁的中文代码注释（1 句话），突出核心作用。仅返回注释文本，不要返回注释格式符。";

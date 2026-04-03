@@ -144,13 +144,44 @@ public class MetricCalculator {
         if (text == null || text.isBlank()) {
             return List.of();
         }
-        String[] parts = text.toLowerCase().trim().split("\\s+");
+
         List<String> tokens = new ArrayList<>();
-        for (String part : parts) {
-            if (!part.isBlank()) {
-                tokens.add(part);
+        StringBuilder currentWord = new StringBuilder();
+        String normalized = text.toLowerCase().trim();
+
+        for (int i = 0; i < normalized.length(); ) {
+            int codePoint = normalized.codePointAt(i);
+            i += Character.charCount(codePoint);
+
+            if (isHanCharacter(codePoint)) {
+                flushToken(tokens, currentWord);
+                tokens.add(new String(Character.toChars(codePoint)));
+                continue;
+            }
+
+            if (isWordCharacter(codePoint)) {
+                currentWord.appendCodePoint(codePoint);
+            } else {
+                flushToken(tokens, currentWord);
             }
         }
+
+        flushToken(tokens, currentWord);
         return tokens;
+    }
+
+    private void flushToken(List<String> tokens, StringBuilder currentWord) {
+        if (currentWord.length() > 0) {
+            tokens.add(currentWord.toString());
+            currentWord.setLength(0);
+        }
+    }
+
+    private boolean isHanCharacter(int codePoint) {
+        return Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HAN;
+    }
+
+    private boolean isWordCharacter(int codePoint) {
+        return Character.isLetterOrDigit(codePoint) || codePoint == '_';
     }
 }
