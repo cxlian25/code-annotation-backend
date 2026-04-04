@@ -57,10 +57,9 @@ public class AnnotationController {
         EvaluateDatasetResponse response = evaluationService.evaluate(safeRequest);
 
         log.info(
-                "[/evaluate] response sampleCount={}, bleu={}, sentenceBleu={}, meteor={}, rougeL={}",
+                "[/evaluate] response sampleCount={}, bleu={}, meteor={}, rougeL={}",
                 response.getSampleCount(),
                 response.getBleu(),
-                response.getSentenceBleu(),
                 response.getMeteor(),
                 response.getRougeL()
         );

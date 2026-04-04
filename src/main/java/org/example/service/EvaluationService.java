@@ -32,13 +32,10 @@ public class EvaluationService {
         }
 
         if (total == 0) {
-            return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0, 0.0);
+            return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0);
         }
 
-        double sentenceBleuSum = 0.0;
         double meteorSum = 0.0;
-        double rougeLSum = 0.0;
-
         List<String> evaluatedReferences = new ArrayList<>(total);
         List<String> predictions = new ArrayList<>(total);
 
@@ -49,21 +46,17 @@ public class EvaluationService {
 
             evaluatedReferences.add(reference);
             predictions.add(prediction);
-
-            sentenceBleuSum += metricCalculator.bleu(reference, prediction);
             meteorSum += metricCalculator.meteor(reference, prediction);
-            rougeLSum += metricCalculator.rougeL(reference, prediction);
         }
 
         double corpusBleu = metricCalculator.bleuCorpus(evaluatedReferences, predictions);
-        double sentenceBleu = sentenceBleuSum / total;
+        double corpusRougeL = metricCalculator.rougeLCorpus(evaluatedReferences, predictions);
 
         return new EvaluateDatasetResponse(
                 total,
                 round(corpusBleu),
-                round(sentenceBleu),
                 round(meteorSum / total),
-                round(rougeLSum / total)
+                round(corpusRougeL)
         );
     }
 

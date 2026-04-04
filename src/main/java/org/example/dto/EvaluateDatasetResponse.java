@@ -5,24 +5,17 @@ public class EvaluateDatasetResponse {
     private int sampleCount;
     // Main BLEU score (corpus-level BLEU over the whole evaluated set).
     private double bleu;
-    // Auxiliary BLEU score (average sentence-level BLEU).
-    private double sentenceBleu;
     // Average METEOR score.
     private double meteor;
-    // Average ROUGE-L score.
+    // Main ROUGE-L score (corpus-level ROUGE-L over the whole evaluated set).
     private double rougeL;
 
     public EvaluateDatasetResponse() {
     }
 
     public EvaluateDatasetResponse(int sampleCount, double bleu, double meteor, double rougeL) {
-        this(sampleCount, bleu, bleu, meteor, rougeL);
-    }
-
-    public EvaluateDatasetResponse(int sampleCount, double bleu, double sentenceBleu, double meteor, double rougeL) {
         this.sampleCount = sampleCount;
         this.bleu = bleu;
-        this.sentenceBleu = sentenceBleu;
         this.meteor = meteor;
         this.rougeL = rougeL;
     }
@@ -41,14 +34,6 @@ public class EvaluateDatasetResponse {
 
     public void setBleu(double bleu) {
         this.bleu = bleu;
-    }
-
-    public double getSentenceBleu() {
-        return sentenceBleu;
-    }
-
-    public void setSentenceBleu(double sentenceBleu) {
-        this.sentenceBleu = sentenceBleu;
     }
 
     public double getMeteor() {

@@ -28,8 +28,6 @@ public class MetricCalculator {
 
         int refLen = refTokens.size();
         int candLen = candTokens.size();
-
-        //BP：长度惩罚因子
         double brevityPenalty = candLen > refLen ? 1.0 : Math.exp(1.0 - ((double) refLen / candLen));
 
         return brevityPenalty * Math.exp(logPrecisionSum);
@@ -134,6 +132,37 @@ public class MetricCalculator {
         return (2.0 * precision * recall) / (precision + recall);
     }
 
+    public double rougeLCorpus(List<String> references, List<String> candidates) {
+        if (references == null || candidates == null) {
+            return 0.0;
+        }
+
+        int total = Math.min(references.size(), candidates.size());
+        if (total == 0) {
+            return 0.0;
+        }
+
+        long lcsSum = 0;
+        long refLenSum = 0;
+        long candLenSum = 0;
+
+        for (int i = 0; i < total; i++) {
+            List<String> refTokens = tokenize(references.get(i));
+            List<String> candTokens = tokenize(candidates.get(i));
+            lcsSum += lcsLength(refTokens, candTokens);
+            refLenSum += refTokens.size();
+            candLenSum += candTokens.size();
+        }
+
+        if (refLenSum == 0 || candLenSum == 0 || lcsSum == 0) {
+            return 0.0;
+        }
+
+        double precision = (double) lcsSum / candLenSum;
+        double recall = (double) lcsSum / refLenSum;
+        return (2.0 * precision * recall) / (precision + recall);
+    }
+
     private double modifiedPrecision(List<String> reference, List<String> candidate, int n) {
         Map<String, Integer> refCounts = countNgrams(reference, n);
         Map<String, Integer> candCounts = countNgrams(candidate, n);
@@ -151,7 +180,6 @@ public class MetricCalculator {
             return 1.0;
         }
 
-        //平滑处理
         return (clipped + 1.0) / (total + 1.0);
     }
 
