@@ -32,29 +32,36 @@ public class EvaluationService {
         }
 
         if (total == 0) {
-            return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0);
+            return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0, 0.0);
         }
 
-        // 平均 BLEU 分数（衡量生成注释与参考注释的 n-gram 重合度）
-        double bleuSum = 0.0;
-        // 平均 METEOR 分数（综合考虑精确率、召回率和片段连续性）
+        double sentenceBleuSum = 0.0;
         double meteorSum = 0.0;
-        // 平均 ROUGE-L 分数（基于最长公共子序列的相似度）
         double rougeLSum = 0.0;
+
+        List<String> evaluatedReferences = new ArrayList<>(total);
+        List<String> predictions = new ArrayList<>(total);
 
         for (int i = 0; i < total; i++) {
             String code = codeSamples.get(i);
             String reference = references.get(i);
             String prediction = annotationGenerationService.generateComment(code, null);
 
-            bleuSum += metricCalculator.bleu(reference, prediction);
+            evaluatedReferences.add(reference);
+            predictions.add(prediction);
+
+            sentenceBleuSum += metricCalculator.bleu(reference, prediction);
             meteorSum += metricCalculator.meteor(reference, prediction);
             rougeLSum += metricCalculator.rougeL(reference, prediction);
         }
 
+        double corpusBleu = metricCalculator.bleuCorpus(evaluatedReferences, predictions);
+        double sentenceBleu = sentenceBleuSum / total;
+
         return new EvaluateDatasetResponse(
                 total,
-                round(bleuSum / total),
+                round(corpusBleu),
+                round(sentenceBleu),
                 round(meteorSum / total),
                 round(rougeLSum / total)
         );

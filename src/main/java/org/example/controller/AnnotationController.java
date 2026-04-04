@@ -38,7 +38,6 @@ public class AnnotationController {
     public GenerateAnnotationResponse generate(@Valid @RequestBody GenerateAnnotationRequest request) {
         log.info("[/generate] request targetCode={}, context={}", abbreviate(request.getTargetCode()), abbreviate(request.getContext()));
 
-//        return new GenerateAnnotationResponse("222","一加一等于二");
         GenerateAnnotationResponse response = annotationGenerationService.generate(request);
 
         log.info(
@@ -58,9 +57,10 @@ public class AnnotationController {
         EvaluateDatasetResponse response = evaluationService.evaluate(safeRequest);
 
         log.info(
-                "[/evaluate] response sampleCount={}, bleu={}, meteor={}, rougeL={}",
+                "[/evaluate] response sampleCount={}, bleu={}, sentenceBleu={}, meteor={}, rougeL={}",
                 response.getSampleCount(),
                 response.getBleu(),
+                response.getSentenceBleu(),
                 response.getMeteor(),
                 response.getRougeL()
         );

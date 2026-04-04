@@ -28,8 +28,49 @@ public class MetricCalculator {
 
         int refLen = refTokens.size();
         int candLen = candTokens.size();
+
+        //BP：长度惩罚因子
         double brevityPenalty = candLen > refLen ? 1.0 : Math.exp(1.0 - ((double) refLen / candLen));
 
+        return brevityPenalty * Math.exp(logPrecisionSum);
+    }
+
+    public double bleuCorpus(List<String> references, List<String> candidates) {
+        if (references == null || candidates == null) {
+            return 0.0;
+        }
+
+        int total = Math.min(references.size(), candidates.size());
+        if (total == 0) {
+            return 0.0;
+        }
+
+        List<List<String>> referenceTokens = new ArrayList<>(total);
+        List<List<String>> candidateTokens = new ArrayList<>(total);
+        int refLenSum = 0;
+        int candLenSum = 0;
+
+        for (int i = 0; i < total; i++) {
+            List<String> ref = tokenize(references.get(i));
+            List<String> cand = tokenize(candidates.get(i));
+            referenceTokens.add(ref);
+            candidateTokens.add(cand);
+            refLenSum += ref.size();
+            candLenSum += cand.size();
+        }
+
+        if (candLenSum == 0) {
+            return 0.0;
+        }
+
+        double logPrecisionSum = 0.0;
+        int maxN = 4;
+        for (int n = 1; n <= maxN; n++) {
+            double precision = modifiedPrecisionCorpus(referenceTokens, candidateTokens, n);
+            logPrecisionSum += (1.0 / maxN) * Math.log(precision);
+        }
+
+        double brevityPenalty = candLenSum > refLenSum ? 1.0 : Math.exp(1.0 - ((double) refLenSum / candLenSum));
         return brevityPenalty * Math.exp(logPrecisionSum);
     }
 
@@ -108,6 +149,25 @@ public class MetricCalculator {
 
         if (total == 0) {
             return 1.0;
+        }
+
+        //平滑处理
+        return (clipped + 1.0) / (total + 1.0);
+    }
+
+    private double modifiedPrecisionCorpus(List<List<String>> references, List<List<String>> candidates, int n) {
+        int clipped = 0;
+        int total = 0;
+
+        int sampleCount = Math.min(references.size(), candidates.size());
+        for (int i = 0; i < sampleCount; i++) {
+            Map<String, Integer> refCounts = countNgrams(references.get(i), n);
+            Map<String, Integer> candCounts = countNgrams(candidates.get(i), n);
+            for (Map.Entry<String, Integer> entry : candCounts.entrySet()) {
+                int refCount = refCounts.getOrDefault(entry.getKey(), 0);
+                clipped += Math.min(refCount, entry.getValue());
+                total += entry.getValue();
+            }
         }
 
         return (clipped + 1.0) / (total + 1.0);
