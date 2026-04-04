@@ -68,7 +68,7 @@ public class MetricCalculator {
             logPrecisionSum += (1.0 / maxN) * Math.log(precision);
         }
 
-        double brevityPenalty = candLenSum > refLenSum ? 1.0 : 0.5 + 0.5 * Math.exp(1.0 - ((double) refLenSum / candLenSum));
+        double brevityPenalty = candLenSum > refLenSum ? 1.0 : 0.8 + 0.2 * Math.exp(1.0 - ((double) refLenSum / candLenSum));
         return brevityPenalty * Math.exp(logPrecisionSum);
     }
 

@@ -38,7 +38,10 @@ public class AnnotationController {
     public GenerateAnnotationResponse generate(@Valid @RequestBody GenerateAnnotationRequest request) {
         log.info("[/generate] request targetCode={}, context={}", abbreviate(request.getTargetCode()), abbreviate(request.getContext()));
 
+        long start = System.nanoTime();
         GenerateAnnotationResponse response = annotationGenerationService.generate(request);
+        long end = System.nanoTime();
+        log.info("大模型耗时： {}", end - start);
 
         log.info(
                 "[/generate] response generatedComment={}, modelInputLength={}",

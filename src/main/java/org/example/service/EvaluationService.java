@@ -1,10 +1,13 @@
 package org.example.service;
 
+import org.example.controller.AnnotationController;
 import org.example.dto.EvaluateDatasetRequest;
 import org.example.dto.EvaluateDatasetResponse;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +17,7 @@ import java.util.List;
 
 @Service
 public class EvaluationService {
+    private static final Logger log = LoggerFactory.getLogger(AnnotationController.class);
     private final AnnotationGenerationService annotationGenerationService;
     private final MetricCalculator metricCalculator;
 
@@ -39,15 +43,27 @@ public class EvaluationService {
         List<String> evaluatedReferences = new ArrayList<>(total);
         List<String> predictions = new ArrayList<>(total);
 
+        log.info("开始测试");
+
+        double timeSum = 0.0;
+
         for (int i = 0; i < total; i++) {
+            log.info("开始处理第 {} 行数据", i + 1);
             String code = codeSamples.get(i);
             String reference = references.get(i);
+
+            long start = System.nanoTime();
             String prediction = annotationGenerationService.generateComment(code, null);
+            log.info("输出： {}", prediction);
+            long end = System.nanoTime();
+            timeSum = end - start;
 
             evaluatedReferences.add(reference);
             predictions.add(prediction);
             meteorSum += metricCalculator.meteor(reference, prediction);
         }
+        log.info("{} 行数据已全部获取完毕",total);
+        log.info("大模型平均耗时： {}", timeSum / total / 1_000_000.0);
 
         double corpusBleu = metricCalculator.bleuCorpus(evaluatedReferences, predictions);
         double corpusRougeL = metricCalculator.rougeLCorpus(evaluatedReferences, predictions);
