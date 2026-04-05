@@ -1,14 +1,13 @@
 package org.example.service;
 
-import org.example.controller.AnnotationController;
 import org.example.dto.EvaluateDatasetRequest;
 import org.example.dto.EvaluateDatasetResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,16 +17,21 @@ import java.util.List;
 
 @Service
 public class EvaluationService {
-    private static final Logger log = LoggerFactory.getLogger(AnnotationController.class);
+    private static final Logger log = LoggerFactory.getLogger(EvaluationService.class);
+
     private final AnnotationGenerationService annotationGenerationService;
     private final MetricCalculator metricCalculator;
+    private final MeteorScoreService meteorScoreService;
 
-    @Value("${llm.provider}")
+    @Value("${llm.provider:}")
     private String llmModel;
 
-    public EvaluationService(AnnotationGenerationService annotationGenerationService, MetricCalculator metricCalculator) {
+    public EvaluationService(AnnotationGenerationService annotationGenerationService,
+                             MetricCalculator metricCalculator,
+                             MeteorScoreService meteorScoreService) {
         this.annotationGenerationService = annotationGenerationService;
         this.metricCalculator = metricCalculator;
+        this.meteorScoreService = meteorScoreService;
     }
 
     public EvaluateDatasetResponse evaluate(EvaluateDatasetRequest request) {
@@ -43,14 +47,12 @@ public class EvaluationService {
             return new EvaluateDatasetResponse(0, 0.0, 0.0, 0.0);
         }
 
-        double meteorSum = 0.0;
         List<String> evaluatedReferences = new ArrayList<>(total);
         List<String> predictions = new ArrayList<>(total);
 
         log.info("开始测试");
 
         double timeSum = 0.0;
-
         for (int i = 0; i < total; i++) {
             log.info("开始处理第 {} 行数据", i + 1);
             String code = codeSamples.get(i);
@@ -60,41 +62,39 @@ public class EvaluationService {
             String prediction = annotationGenerationService.generateComment(code, null);
             log.info("输出： {}", prediction);
             long end = System.nanoTime();
-            timeSum = timeSum + end - start;
+            timeSum += end - start;
 
-            if (llmModel.equals("codex")){
-                try{
+            if ("codex".equalsIgnoreCase(llmModel)) {
+                try {
                     Thread.sleep(5000);
-                } catch(Exception e){
+                } catch (Exception e) {
                     log.error("Failed to sleep", e);
                 }
             }
 
             evaluatedReferences.add(reference);
             predictions.add(prediction);
-            meteorSum += metricCalculator.meteor(reference, prediction);
 
-            if (llmModel.equals("codex")){
-                if (i % 30 == 0){
-                    try{
-                        Thread.sleep(60000);
-                    } catch (Exception e) {
-                        log.error("Failed to sleep", e);
-                    }
+            if ("codex".equalsIgnoreCase(llmModel) && i > 0 && i % 30 == 0) {
+                try {
+                    Thread.sleep(60000);
+                } catch (Exception e) {
+                    log.error("Failed to sleep", e);
                 }
             }
-
         }
+
         log.info("{} 行数据已全部获取完毕",total);
         log.info("大模型平均耗时： {}", timeSum / total / 1_000_000.0);
 
         double corpusBleu = metricCalculator.bleuCorpus(evaluatedReferences, predictions);
         double corpusRougeL = metricCalculator.rougeLCorpus(evaluatedReferences, predictions);
+        double meteorAvg = meteorScoreService.averageMeteor(evaluatedReferences, predictions);
 
         return new EvaluateDatasetResponse(
                 total,
                 round(corpusBleu),
-                round(meteorSum / total),
+                round(meteorAvg),
                 round(corpusRougeL)
         );
     }
