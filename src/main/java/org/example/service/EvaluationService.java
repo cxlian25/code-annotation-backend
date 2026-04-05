@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.controller.AnnotationController;
 import org.example.dto.EvaluateDatasetRequest;
 import org.example.dto.EvaluateDatasetResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class EvaluationService {
     private static final Logger log = LoggerFactory.getLogger(AnnotationController.class);
     private final AnnotationGenerationService annotationGenerationService;
     private final MetricCalculator metricCalculator;
+
+    @Value("${llm.provider}")
+    private String llmModel;
 
     public EvaluationService(AnnotationGenerationService annotationGenerationService, MetricCalculator metricCalculator) {
         this.annotationGenerationService = annotationGenerationService;
@@ -56,11 +60,30 @@ public class EvaluationService {
             String prediction = annotationGenerationService.generateComment(code, null);
             log.info("输出： {}", prediction);
             long end = System.nanoTime();
-            timeSum = end - start;
+            timeSum = timeSum + end - start;
+
+            if (llmModel.equals("codex")){
+                try{
+                    Thread.sleep(5000);
+                } catch(Exception e){
+                    log.error("Failed to sleep", e);
+                }
+            }
 
             evaluatedReferences.add(reference);
             predictions.add(prediction);
             meteorSum += metricCalculator.meteor(reference, prediction);
+
+            if (llmModel.equals("codex")){
+                if (i % 30 == 0){
+                    try{
+                        Thread.sleep(60000);
+                    } catch (Exception e) {
+                        log.error("Failed to sleep", e);
+                    }
+                }
+            }
+
         }
         log.info("{} 行数据已全部获取完毕",total);
         log.info("大模型平均耗时： {}", timeSum / total / 1_000_000.0);

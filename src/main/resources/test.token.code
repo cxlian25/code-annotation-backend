@@ -1,7 +1,7 @@
 public int entrySize ( Object key , Object value ) throws IllegalArgumentException { if ( value == Token . TOMBSTONE ) { return NUM_ ; } int size = HeapLRUCapacityController . this . getPerEntryOverhead ( ) ; size += sizeof ( key ) ; size += sizeof ( value ) ; return size ; }
 private void returnData ( Object ret ) { if ( myHost != null ) { myHost . returnData ( ret ) ; } }
 public CModuleFilterFieldMenu ( final JTextField filterField ) { add ( new CFilterViewsAction ( filterField ) ) ; }
-private void returnData ( Object ret ) { if ( myHost != null ) { myHost . returnData ( ret ) ; } }
+long bitcount ( ) { return bitcount ; }
 public TLongArrayList ( ) { this ( DEFAULT_CAPACITY ) ; }
 public static DecomposableMatchBuilder1 < Float , Float > caseFloat ( MatchesAny f ) { List < Matcher < Object > > matchers = new ArrayList < > ( ) ; matchers . add ( any ( ) ) ; return new DecomposableMatchBuilder1 < > ( matchers , NUM_ , new PrimitiveFieldExtractor < > ( Float . class ) ) ; }
 public synchronized Map < D , EdgeFunction < L > > forwardLookup ( D sourceVal , N target ) { assert sourceVal != null ; assert target != null ; Map < D , EdgeFunction < L > > res = nonEmptyForwardLookup . get ( sourceVal , target ) ; if ( res == null ) return Collections . emptyMap ( ) ; return res ; }

@@ -10,4 +10,5 @@ public class EvaluateDatasetRequest {
     public void setMaxSamples(Integer maxSamples) {
         this.maxSamples = maxSamples;
     }
+
 }
