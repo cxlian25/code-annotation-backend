@@ -34,9 +34,9 @@ public class EvaluationService {
         this.meteorScoreService = meteorScoreService;
     }
 
-    public EvaluateDatasetResponse evaluate(EvaluateDatasetRequest request) {
-        List<String> codeSamples = readAllLines("test.token.code");
-        List<String> references = readAllLines("test.token.nl");
+    public EvaluateDatasetResponse evaluate(EvaluateDatasetRequest request, String inputFileName, String outputFileName) {
+        List<String> codeSamples = readAllLines(inputFileName);
+        List<String> references = readAllLines(outputFileName);
 
         int total = Math.min(codeSamples.size(), references.size());
         if (request != null && request.getMaxSamples() != null && request.getMaxSamples() > 0) {
