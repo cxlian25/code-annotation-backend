@@ -45,7 +45,7 @@ public class RoutingLlmClient implements LlmClient {
             case "placeholder" -> placeholderLlmClient.generateComment(modelInput, detailLevel);
             case "deepseek" -> deepSeekLlmClient.generateComment(modelInput, detailLevel);
             default -> {
-                log.warn("Unknown llm.provider='{}', fallback to deepseek", provider);
+                log.warn("llm.provider='{}' 不在支持范围内，已回退到 DeepSeek。可选值：deepseek、codex、qwen、placeholder", provider);
                 yield deepSeekLlmClient.generateComment(modelInput, detailLevel);
             }
         };

@@ -4,13 +4,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
 import org.example.service.CommentPromptTemplateService;
 import org.example.service.LlmClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +22,8 @@ import java.util.Map;
 
 @Service
 public class CodexLlmClient implements LlmClient {
+    private static final Logger log = LoggerFactory.getLogger(CodexLlmClient.class);
+
     private final PlaceholderLlmClient fallbackClient;
     private final CommentPromptTemplateService promptTemplateService;
     private final RestTemplate restTemplate = new RestTemplate();
@@ -44,8 +50,14 @@ public class CodexLlmClient implements LlmClient {
     public String generateComment(String modelInput, CommentDetailLevel detailLevel) {
         CommentDetailLevel safeDetailLevel = detailLevel == null ? CommentDetailLevel.CONCISE : detailLevel;
 
-        if (apiKey == null || apiKey.isBlank() || model == null || model.isBlank()) {
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+        if (apiKey == null || apiKey.isBlank()) {
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 codex.api-key");
+        }
+        if (baseUrl == null || baseUrl.isBlank()) {
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 codex.base-url");
+        }
+        if (model == null || model.isBlank()) {
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 codex.model");
         }
 
         try {
@@ -82,7 +94,7 @@ public class CodexLlmClient implements LlmClient {
 
             JsonNode body = response.getBody();
             if (body == null) {
-                return fallbackClient.generateComment(modelInput, safeDetailLevel);
+                return fallbackWithReason(modelInput, safeDetailLevel, "接口响应体为空");
             }
 
             String outputText = extractOutputText(body);
@@ -90,9 +102,32 @@ public class CodexLlmClient implements LlmClient {
                 return outputText;
             }
 
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "接口响应中未找到有效文本内容，响应片段：" + LlmFallbackSupport.preview(body.toString())
+            );
+        } catch (RestClientResponseException ex) {
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "HTTP " + ex.getRawStatusCode() + "，响应内容：" + LlmFallbackSupport.preview(ex.getResponseBodyAsString()),
+                    ex
+            );
+        } catch (ResourceAccessException ex) {
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "网络访问异常：" + LlmFallbackSupport.describeException(ex),
+                    ex
+            );
         } catch (Exception ex) {
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "调用异常：" + LlmFallbackSupport.describeException(ex),
+                    ex
+            );
         }
     }
 
@@ -147,5 +182,23 @@ public class CodexLlmClient implements LlmClient {
             return contentNode.asText().trim();
         }
         return null;
+    }
+
+    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason) {
+        log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason);
+        return fallbackClient.generateComment(modelInput, detailLevel);
+    }
+
+    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason, Exception ex) {
+        log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason, ex);
+        return fallbackClient.generateComment(modelInput, detailLevel);
+    }
+
+    private String providerLabel() {
+        return "Codex(" + safeModelName() + ")";
+    }
+
+    private String safeModelName() {
+        return model == null || model.isBlank() ? "未配置模型" : model.trim();
     }
 }

@@ -4,19 +4,25 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
 import org.example.service.CommentPromptTemplateService;
 import org.example.service.LlmClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class DeepSeekLlmClient implements LlmClient {
+    private static final Logger log = LoggerFactory.getLogger(DeepSeekLlmClient.class);
+
     private final PlaceholderLlmClient fallbackClient;
     private final CommentPromptTemplateService promptTemplateService;
     private final RestTemplate restTemplate = new RestTemplate();
@@ -41,7 +47,13 @@ public class DeepSeekLlmClient implements LlmClient {
         CommentDetailLevel safeDetailLevel = detailLevel == null ? CommentDetailLevel.CONCISE : detailLevel;
 
         if (apiKey == null || apiKey.isBlank()) {
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 deepseek.api-key");
+        }
+        if (baseUrl == null || baseUrl.isBlank()) {
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 deepseek.base-url");
+        }
+        if (model == null || model.isBlank()) {
+            return fallbackWithReason(modelInput, safeDetailLevel, "未配置 deepseek.model");
         }
 
         try {
@@ -64,7 +76,7 @@ public class DeepSeekLlmClient implements LlmClient {
 
             JsonNode body = response.getBody();
             if (body == null) {
-                return fallbackClient.generateComment(modelInput, safeDetailLevel);
+                return fallbackWithReason(modelInput, safeDetailLevel, "接口响应体为空");
             }
 
             JsonNode contentNode = body.path("choices").path(0).path("message").path("content");
@@ -72,9 +84,50 @@ public class DeepSeekLlmClient implements LlmClient {
                 return contentNode.asText().trim();
             }
 
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "接口响应中未找到有效文本内容，响应片段：" + LlmFallbackSupport.preview(body.toString())
+            );
+        } catch (RestClientResponseException ex) {
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "HTTP " + ex.getRawStatusCode() + "，响应内容：" + LlmFallbackSupport.preview(ex.getResponseBodyAsString()),
+                    ex
+            );
+        } catch (ResourceAccessException ex) {
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "网络访问异常：" + LlmFallbackSupport.describeException(ex),
+                    ex
+            );
         } catch (Exception ex) {
-            return fallbackClient.generateComment(modelInput, safeDetailLevel);
+            return fallbackWithReason(
+                    modelInput,
+                    safeDetailLevel,
+                    "调用异常：" + LlmFallbackSupport.describeException(ex),
+                    ex
+            );
         }
+    }
+
+    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason) {
+        log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason);
+        return fallbackClient.generateComment(modelInput, detailLevel);
+    }
+
+    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason, Exception ex) {
+        log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason, ex);
+        return fallbackClient.generateComment(modelInput, detailLevel);
+    }
+
+    private String providerLabel() {
+        return "DeepSeek(" + safeModelName() + ")";
+    }
+
+    private String safeModelName() {
+        return model == null || model.isBlank() ? "未配置模型" : model.trim();
     }
 }

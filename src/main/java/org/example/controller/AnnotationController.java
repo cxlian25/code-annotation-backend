@@ -36,6 +36,8 @@ public class AnnotationController {
 
     @PostMapping("/generate")
     public GenerateAnnotationResponse generate(@Valid @RequestBody GenerateAnnotationRequest request) {
+
+//        request.setContext("");
         log.info("[/generate] request targetCode={}, context={}", abbreviate(request.getTargetCode()), abbreviate(request.getContext()));
 
         long start = System.nanoTime();
