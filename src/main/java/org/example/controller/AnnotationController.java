@@ -59,8 +59,8 @@ public class AnnotationController {
         EvaluateDatasetRequest safeRequest = request == null ? new EvaluateDatasetRequest() : request;
         log.info("[/evaluate] request maxSamples={}", safeRequest.getMaxSamples());
 
-        String inputFileName = "long.code";
-        String ouputFileName = "long.nl";
+        String inputFileName = "short.code";
+        String ouputFileName = "short.nl";
 
         EvaluateDatasetResponse response = evaluationService.evaluate(safeRequest, inputFileName, ouputFileName);
 
