@@ -43,7 +43,8 @@ public class AnnotationController {
         long start = System.nanoTime();
         GenerateAnnotationResponse response = annotationGenerationService.generate(request);
         long end = System.nanoTime();
-        log.info("大模型耗时： {}", end - start);
+        double time = (1.0 * end - start) / 1_000_000;
+        log.info("大模型耗时： {}", time);
 
         log.info(
                 "[/generate] response generatedComment={}, modelInputLength={}",
