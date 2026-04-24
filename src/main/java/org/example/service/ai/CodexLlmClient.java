@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.example.dto.CommentDetailLevel;
 import org.example.service.CommentPromptTemplateService;
 import org.example.service.LlmClient;
+import org.example.service.LlmGenerationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +48,7 @@ public class CodexLlmClient implements LlmClient {
     }
 
     @Override
-    public String generateComment(String modelInput, CommentDetailLevel detailLevel) {
+    public LlmGenerationResult generateCommentResult(String modelInput, CommentDetailLevel detailLevel) {
         CommentDetailLevel safeDetailLevel = detailLevel == null ? CommentDetailLevel.CONCISE : detailLevel;
 
         if (apiKey == null || apiKey.isBlank()) {
@@ -99,7 +100,7 @@ public class CodexLlmClient implements LlmClient {
 
             String outputText = extractOutputText(body);
             if (outputText != null && !outputText.isBlank()) {
-                return outputText;
+                return LlmGenerationResult.success(outputText, providerLabel());
             }
 
             return fallbackWithReason(
@@ -184,14 +185,24 @@ public class CodexLlmClient implements LlmClient {
         return null;
     }
 
-    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason) {
+    private LlmGenerationResult fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason) {
         log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason);
-        return fallbackClient.generateComment(modelInput, detailLevel);
+        return buildFallbackResult(modelInput, detailLevel, reason);
     }
 
-    private String fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason, Exception ex) {
+    private LlmGenerationResult fallbackWithReason(String modelInput, CommentDetailLevel detailLevel, String reason, Exception ex) {
         log.warn("调用候选大模型 {} 失败，已回退到占位实现。原因：{}", providerLabel(), reason, ex);
-        return fallbackClient.generateComment(modelInput, detailLevel);
+        return buildFallbackResult(modelInput, detailLevel, reason);
+    }
+
+    private LlmGenerationResult buildFallbackResult(String modelInput, CommentDetailLevel detailLevel, String reason) {
+        LlmGenerationResult fallbackResult = fallbackClient.generateCommentResult(modelInput, detailLevel);
+        return LlmGenerationResult.fallback(
+                fallbackResult.generatedComment(),
+                providerLabel(),
+                fallbackResult.actualProvider(),
+                reason
+        );
     }
 
     private String providerLabel() {

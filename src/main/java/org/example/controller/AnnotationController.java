@@ -47,10 +47,21 @@ public class AnnotationController {
         log.info("大模型耗时： {}", time);
 
         log.info(
-                "[/generate] response generatedComment={}, modelInputLength={}",
+                "[/generate] response requestedProvider={}, actualProvider={}, fallbackUsed={}, generatedComment={}, modelInputLength={}",
+                response.getLlmRequestedProvider(),
+                response.getLlmActualProvider(),
+                response.isLlmFallbackUsed(),
                 abbreviate(response.getGeneratedComment()),
                 safeLength(response.getModelInput())
         );
+        if (response.isLlmFallbackUsed()) {
+            log.warn(
+                    "[/generate] llm fallback triggered requestedProvider={}, actualProvider={}, reason={}",
+                    response.getLlmRequestedProvider(),
+                    response.getLlmActualProvider(),
+                    abbreviate(response.getLlmFallbackReason())
+            );
+        }
 
         return response;
     }

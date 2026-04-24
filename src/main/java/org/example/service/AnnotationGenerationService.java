@@ -36,9 +36,16 @@ public class AnnotationGenerationService {
         modelInputMap.put("commentDetailLevel", detailLevel);
 
         String modelInput = toJson(modelInputMap);
-        String generatedComment = llmClient.generateComment(modelInput, detailLevel);
+        LlmGenerationResult llmResult = llmClient.generateCommentResult(modelInput, detailLevel);
 
-        return new GenerateAnnotationResponse(modelInput, generatedComment);
+        return new GenerateAnnotationResponse(
+                modelInput,
+                llmResult.generatedComment(),
+                llmResult.requestedProvider(),
+                llmResult.actualProvider(),
+                llmResult.fallbackUsed(),
+                llmResult.fallbackReason()
+        );
     }
 
     public String generateComment(String targetCode, String context) {

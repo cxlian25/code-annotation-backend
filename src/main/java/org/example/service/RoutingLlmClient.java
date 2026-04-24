@@ -37,16 +37,16 @@ public class RoutingLlmClient implements LlmClient {
     }
 
     @Override
-    public String generateComment(String modelInput, CommentDetailLevel detailLevel) {
+    public LlmGenerationResult generateCommentResult(String modelInput, CommentDetailLevel detailLevel) {
         String selected = provider == null ? "deepseek" : provider.trim().toLowerCase(Locale.ROOT);
         return switch (selected) {
-            case "codex", "openai" -> codexLlmClient.generateComment(modelInput, detailLevel);
-            case "qwen", "dashscope" -> qwenLlmClient.generateComment(modelInput, detailLevel);
-            case "placeholder" -> placeholderLlmClient.generateComment(modelInput, detailLevel);
-            case "deepseek" -> deepSeekLlmClient.generateComment(modelInput, detailLevel);
+            case "codex", "openai" -> codexLlmClient.generateCommentResult(modelInput, detailLevel);
+            case "qwen", "dashscope" -> qwenLlmClient.generateCommentResult(modelInput, detailLevel);
+            case "placeholder" -> placeholderLlmClient.generateCommentResult(modelInput, detailLevel);
+            case "deepseek" -> deepSeekLlmClient.generateCommentResult(modelInput, detailLevel);
             default -> {
                 log.warn("llm.provider='{}' 不在支持范围内，已回退到 DeepSeek。可选值：deepseek、codex、qwen、placeholder", provider);
-                yield deepSeekLlmClient.generateComment(modelInput, detailLevel);
+                yield deepSeekLlmClient.generateCommentResult(modelInput, detailLevel);
             }
         };
     }
